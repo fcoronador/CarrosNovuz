@@ -14,7 +14,8 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-        //
+        $vehiculos =  vehiculo::all();
+        return $vehiculos;
     }
 
     /**
@@ -35,7 +36,8 @@ class VehiculoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $conductor = vehiculo::create($request->all());
+        return view('welcome');
     }
 
     /**

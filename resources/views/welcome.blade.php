@@ -65,35 +65,52 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
             <div class="content">
                 <div class="title m-b-md">
                     Laravel
                 </div>
+                <span>Lista de conductores</span>
+                <ul class="list-group">
+                    @foreach ($conductores as $item)
+                <li class="list-group-item">{{$item->nombre}} {{$item->placa_veh}}</li>
+                    @endforeach
+                </ul>
+                <span>Lista de vehiculos</span>
+                <ul class="list-group">
+                    @foreach ($vehi as $item)
+                <li class="list-group-item">{{$item->placa}} {{$item->marca}} {{$item->modelo}}</li>
+                    @endforeach
+                </ul>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+
+                <span>Crear Vehiculo</span>
+                <div class="form-group">
+                <form action="{{route('Gvehiculo')}}" method="post">
+                        @csrf
+                        <label for="Placa">Placa</label>
+                        <input type="text" name="placa" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                        <label for="marca">Marca</label>
+                        <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                        <label for="modelo">Modelo</label>
+                        <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                        <input type="submit" value="Enviar">
+                    </form>
                 </div>
+                <hr>
+                <span>Crear conductor</span>
+                <div class="form-group">
+                <form action="{{route('Gconductor')}}" method="post">
+                        @csrf
+                        <label for="ID">ID</label>
+                        <input type="text" name="numID" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                        <label for="placa">Placa</label>
+                        <input type="text" name="placa_veh" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                        <input type="submit" value="Enviar">
+                    </form>
+                </div>
+
             </div>
         </div>
     </body>

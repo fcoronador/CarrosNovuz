@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/','welcome');
+Route::get('/','ConductorController@index');
+Route::post('/conductor','ConductorController@store')->name('Gconductor');
+Route::post('/vehiculo','ConductorController@store')->name('Gvehiculo');
+//Route::resource('conductor', 'ConductorController');
