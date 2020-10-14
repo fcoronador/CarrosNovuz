@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 Route::view('/','welcome');
 Route::get('/','ConductorController@index');
 Route::post('/conductor','ConductorController@store')->name('Gconductor');
-Route::post('/vehiculo','ConductorController@store')->name('Gvehiculo');
+Route::post('/vehiculo','VehiculoController@store')->name('Gvehiculo');
 //Route::resource('conductor', 'ConductorController');

@@ -40,7 +40,7 @@ class ConductorController extends Controller
     public function store(Request $request)
     {
         $conductor = conductor::create($request->all());
-        return view('welcome');
+        return redirect('/');
     }
 
     /**

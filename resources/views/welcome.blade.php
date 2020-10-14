@@ -90,9 +90,9 @@
                         <label for="Placa">Placa</label>
                         <input type="text" name="placa" id="" class="form-control" placeholder="" aria-describedby="helpId">
                         <label for="marca">Marca</label>
-                        <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                        <input type="text" name="marca" id="" class="form-control" placeholder="" aria-describedby="helpId">
                         <label for="modelo">Modelo</label>
-                        <input type="text" name="" id="" class="form-control" placeholder="" aria-describedby="helpId">
+                        <input type="text" name="modelo" id="" class="form-control" placeholder="" aria-describedby="helpId">
                         <input type="submit" value="Enviar">
                     </form>
                 </div>

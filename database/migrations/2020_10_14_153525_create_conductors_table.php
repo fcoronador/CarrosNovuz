@@ -17,7 +17,7 @@ class CreateConductorsTable extends Migration
             $table->id();
             $table->integer('numID')->unique();
             $table->string('nombre');
-            $table->string('estado');
+            $table->string('estado')->default(true);
             $table->string('placa_veh');
             $table->foreign('placa_veh')->references('placa')->on('vehiculos');
 
