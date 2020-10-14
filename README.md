@@ -1,3 +1,39 @@
+## INSTRUCCIONES
+
+Para realizar la instalación del proyecto de manera local por favor siga los siguientes pasos:
+
+1. Descargue el repositorio.
+2. En la ubicación del proyecto ejecutar el siguiente comando:
+
+- `composer install `
+- `composer update `
+- `php artisan key:generate`
+
+3. Configure su archivo `.env` con los datos de acceso local a la base de datos de la siguiente manera usando el nombre de base de datos `mydb`:
+
+`DB_CONNECTION=mysql`
+`DB_HOST=nombredelhost`
+`DB_PORT=3306`
+`DB_DATABASE=mydb`
+`DB_USERNAME=nombre_usuario`
+`DB_PASSWORD=contraseña_usuario`
+
+4. Ejecute en la terminal en la ubiación del proyecto los siguientes comandos:
+
+- `php artisan migrate`
+- `php artisan migrate:fresh`
+- `php artisan db:seed`
+- `php artisan serve --port=8080`
+
+5. Para el deplegar el front es necesario entrar en la terminal y acceder a la carpeta frontvue y ejecutar los siguientes comandos:
+
+- `npm install`
+- `npm run serve`
+
+6. Acceder a la url habilitada por vue para visualizar el proyecto
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
