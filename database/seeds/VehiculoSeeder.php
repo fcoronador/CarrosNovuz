@@ -11,6 +11,6 @@ class VehiculoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\vehiculo::class, 10)->create();
     }
 }

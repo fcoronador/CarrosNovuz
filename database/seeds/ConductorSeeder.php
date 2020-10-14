@@ -11,6 +11,6 @@ class ConductorSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\conductor::class, 10)->create();
     }
 }
