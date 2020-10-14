@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\vehiculo;
+use App\conductor;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class VehiculoController extends Controller
@@ -57,9 +59,13 @@ class VehiculoController extends Controller
      * @param  \App\vehiculo  $vehiculo
      * @return \Illuminate\Http\Response
      */
-    public function edit(vehiculo $vehiculo)
+    public function edit($id)
     {
-        //
+        $vehiculos = new VehiculoController();
+        $vehi= $vehiculos->index();
+        $conductores =  conductor::all();
+        $vehiculo = DB::select('select * from vehiculos where id = :id',['id'=>$id]);
+        return view('welcome',compact('vehi','conductores','vehiculo','id'));
     }
 
     /**
@@ -69,9 +75,14 @@ class VehiculoController extends Controller
      * @param  \App\vehiculo  $vehiculo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, vehiculo $vehiculo)
+    public function update(Request $request,$id)
     {
-        //
+        $datos=['placa'=>$request->get('placa'),'marca'=>$request->get('marca'),'modelo'=>$request->get('modelo')];
+       
+        DB::table('vehiculos')
+        ->where('id', ['id'=>$id])
+        ->update($datos);
+        return redirect('/');
     }
 
     /**
@@ -82,6 +93,7 @@ class VehiculoController extends Controller
      */
     public function destroy(vehiculo $vehiculo)
     {
-        //
+        $vehiculo->delete();
+        return redirect('/');
     }
 }

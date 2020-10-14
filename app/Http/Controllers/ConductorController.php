@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\conductor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\VehiculoController;
+use Illuminate\Support\Facades\DB;
 
 class ConductorController extends Controller
 {
@@ -60,9 +61,13 @@ class ConductorController extends Controller
      * @param  \App\conductor  $conductor
      * @return \Illuminate\Http\Response
      */
-    public function edit(conductor $conductor)
+    public function edit($id)
     {
-        //
+        $vehiculos = new VehiculoController();
+        $vehi= $vehiculos->index();
+        $conductores =  conductor::all();
+        $conductor = DB::select('select * from conductors where id = :id',['id'=>$id]);
+        return view('welcome',compact('vehi','conductores','conductor','id'));
     }
 
     /**
@@ -72,10 +77,14 @@ class ConductorController extends Controller
      * @param  \App\conductor  $conductor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, conductor $conductor)
+    public function update(Request $request, $id)
     {
-        $conductor->update($request->all());
-        return $conductor;
+       $datos=['numID'=>$request->get('numID'),'nombre'=>$request->get('nombre'),'placa_veh'=>$request->get('placa_veh')];
+       
+        DB::table('conductors')
+        ->where('id', ['id'=>$id])
+        ->update($datos);
+        return $this->index();
     }
 
     /**
@@ -87,5 +96,6 @@ class ConductorController extends Controller
     public function destroy(conductor $conductor)
     {
         $conductor->delete();
+        return redirect('/');
     }
 }
